@@ -1,0 +1,26 @@
+extends layout 
+block content 
+
+        table(style='width:100%', border='1')
+            th 
+            tr 
+            h1 students
+                td Student ID 
+                td Name 
+                td GPA
+                td Action
+            each elem,i in result
+                tr
+                    td !{elem.sid}
+                    td !{elem.name}
+                    td !{elem.gpa}
+                    td 
+                        a(href=`./students/delete/${elem.sid}`) delete 
+
+        a(href="./addStudent")
+            button(type="button") add student
+        
+        a(href=`./`) home
+    
+    
+                

@@ -1,0 +1,18 @@
+extends layout 
+block content 
+
+    h1 lecturers
+    table(style='width:100%', border='1')
+            tr 
+                td Lecturer ID 
+                td Name 
+                td Dept
+            each elem, i in documents
+                tr
+                    td !{elem._id}
+                    td !{elem.name}
+                    td !{elem.dept}
+
+    a(href="./addLecturer")
+        button(type="button") add lecturer
+    a(href=`./`) home

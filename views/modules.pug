@@ -1,0 +1,23 @@
+extends layout 
+block content 
+
+    table(style='width:100%', border='1')
+        th 
+          tr 
+          h1 modules
+            td Module ID 
+            td Name 
+            td Credits
+            td Update 
+            td Students 
+        each elem,i in result
+            tr
+                td !{elem.mid}
+                td !{elem.name}
+                td !{elem.credits}
+                td 
+                    a(href=`./modules/edit/${elem.mid}`) update 
+                td 
+                    a(href=`./modules/students/${elem.mid}`) List
+                
+    a(href=`./`) home

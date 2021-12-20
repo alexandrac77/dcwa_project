@@ -1,0 +1,16 @@
+extends layout 
+block content 
+
+    table(style='width:100%', border='1')
+        th 
+          tr 
+          h1 students studying 
+            td Student ID 
+            td Name 
+            td GPA 
+        each elem,i in result
+            tr
+                td !{elem.sid}
+                td !{elem.name}
+                td !{elem.gpa}
+    a(href=`./`) home

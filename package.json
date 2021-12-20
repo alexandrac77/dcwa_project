@@ -1,0 +1,20 @@
+{
+  "name": "example1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-validator": "^6.14.0",
+    "mongodb": "^4.2.2",
+    "nodemon": "^2.0.15",
+    "promise-mysql": "^5.0.4",
+    "pug": "^3.0.2"
+  }
+}

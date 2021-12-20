@@ -1,0 +1,13 @@
+extends layout 
+block content 
+    h1 Add Lecturer
+    form(action='/addLecturer', method='POST')
+      p
+        | Lecturer ID:
+        input(type='text', name='_id', value=``)
+        |          Name: 
+        input(type='text', name='name', value=``)
+        |          Dept: 
+        input(type='text', name='dept', value=``)
+      input(type='submit') 
+      

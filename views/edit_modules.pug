@@ -1,0 +1,13 @@
+extends layout 
+block content 
+    h1 Edit Module 
+    form(action='/modules/update', method='POST')
+      p
+        | Module ID:
+        input(type='text', name='mid', value=`${module.mid}`)
+        |          Name: 
+        input(type='text', name='name', value=`${module.name}`)
+        |          Credits: 
+        input(type='text', name='credits', value=`${module.credits}`)
+      input(type='submit')
+      
