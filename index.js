@@ -79,7 +79,7 @@ app.get('/students',(req, res)=>{
 
 
 //  delete student
-app.get('students/delete/:sid', (req,res) =>{
+app.get('/students/delete/:sid', (req,res) =>{
     mysqlDao.deleteStudent(req.params.sid)
     .then((result) =>{
         res.send(result)
@@ -91,11 +91,15 @@ app.get('students/delete/:sid', (req,res) =>{
 
 
 //  add student
-app.get('/addStudent', body('sid').isLength({min:4, max:4}),body('name').isLength({min:5}), (req,res)=>{
+app.get('/addStudent', (req,res)=>{
     res.render("add_student")
 })
 
-app.post('/addStudent', (req,res)=>{
+app.post('/addStudent', body('sid').isLength({min:4, max:4}),body('name').isLength({min:5}),body('gpa').isLength({min:0.0,max:4.0}), (req,res)=>{
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array()})
+    }
     console.log(req.body)
     mysqlDao.addStudent(req.body)
     .then((result)=>{
@@ -112,6 +116,7 @@ app.get('/lecturers',(req, res)=>{
     //res.redirect('/lecturers')
     mongoDao.getLecturers()
         .then((documents)=>{
+            console.log(documents)
             res.render('lecturers',{documents:documents})
         })
         .catch((error)=>{
@@ -125,7 +130,11 @@ app.get('/addLecturer', (req,res)=>{
     res.render("add_lecturer")
 })
 
-app.post('/addLecturer', (req,res)=>{
+app.post('/addLecturer', body('_id').isLength({min:4}),body('name').isLength({min:5}), body('dept').isLength(3),  (req,res)=>{
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors:errors.array()})
+    }
     console.log(req.body)
     mongoDao.addLecturer(req.body._id, req.body.name, req.body.dept)
     .then((result)=>{
